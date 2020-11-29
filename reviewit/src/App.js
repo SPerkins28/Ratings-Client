@@ -1,16 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
-import NavBar from './home/Navbar';
+import React, {useState, useEffect} from 'react';
+import Navbar from './home/Navbar';
+import Auth from './auth/Auth';
+import ReviewIndex from './reviews/ReviewIndex';
 
-function App() {
+function ClientApp() {
+  const [sessionToken, setSessionToken] = useState('');
+
+  useEffect(() => {
+    if(localStorage.getItem('token')) {
+      setSessionToken(localStorage.getItem('token'));
+    }
+  }, [])
+
+  const updateToken = (newToken) => {
+    localStorage.setItem('token', newToken);
+    setSessionToken(newToken);
+    console.log(sessoinToken);
+  }
+
+  const clearToken = () => {
+    localStorage.clear();
+    setSessionToken('');
+  }
+
+  const protectedViews = () => {
+    return(sessoinToken === localStorage.getItem('token') ? <ReviewIndex token={sessionToken}/> : <Auth updateToken={updateToken}/>)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <NavBar />
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
+    <div>
+      <Navbar clickLogout={clearToken} />
+      {protectedViews()}
     </div>
   );
 }
 
-export default App;
+export default ClientApp;
