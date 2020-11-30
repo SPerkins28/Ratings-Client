@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-// import {Container, Row, Col} from 'reactstrap';
+import {Container, Row, Col} from '@material-ui/core';
 import ReviewCreate from './ReviewCreate';
 import ReviewTable from './ReviewTable';
 import ReviewEdit from './ReviewEdit';
