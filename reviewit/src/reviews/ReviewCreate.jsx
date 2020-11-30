@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, Form, FormGroup, Label, Input} from '@material-ui/core'; 
+import {Button, form, FormGroup, Label, InputLabel} from '@material-ui/core'; 
 
 const ReviewCreate = (props) => {
     const [title, setTitle] = useState('');
@@ -30,27 +30,27 @@ const ReviewCreate = (props) => {
         <div className="main">
             <div className="mainDiv">
                 <h3>Write a Movie Review</h3>
-                <Form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <FormGroup>
                         <Label htmlFor="title" value={title} />
-                        <Input name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                        <InputLabel name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
                     </FormGroup>
                     <FormGroup>
                         <Label htmlFor="date" value={date} />
-                        <Input name="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                        <InputLabel name="date" value={date} onChange={(e) => setDate(e.target.value)} />
                     </FormGroup>
                     <FormGroup>
                         <Label htmlFor="entry" value={entry} />
-                        <Input name="entry" onChange={(e) => setEntry(e.target.value)} />
+                        <InputLabel name="entry" onChange={(e) => setEntry(e.target.value)} />
                     </FormGroup>
                     <FormGroup>
                         <Label htmlFor="rating" value={rating} />
-                        <Input name="rating" onChange={(e) => setRating(e.target.value)}>
+                        <InputLabel name="rating" onChange={(e) => setRating(e.target.value)}>
                             <option value="radiobtn">Rating Button</option>
-                        </Input>
+                        </InputLabel>
                     </FormGroup>
                     <Button type="submit">Submit your Movie Review</Button>  
-                </Form>
+                </form>
             </div>
         </div>
     )
