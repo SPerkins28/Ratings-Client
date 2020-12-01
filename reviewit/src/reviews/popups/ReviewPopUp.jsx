@@ -66,14 +66,14 @@ const ReviewPopUp = (props) => {
           >
             {movieReviews.map(review => {
               return (
-                <>
-                <Typography variant="h6" key={review.id} id="reviewTitle"><strong>{review.title}</strong></Typography>
-                <p key={review.id}>{review.entry}</p>
-                <Box key={review.id} component="fieldset" mb={3} borderColor="transparent" id="ratingReadOnly">
+                <div key={review.id}>
+                <Typography variant="h6" id="reviewTitle"><strong>{review.title}</strong></Typography>
+                <p>{review.entry}</p>
+                <Box component="fieldset" mb={3} borderColor="transparent" id="ratingReadOnly">
                   <Rating name="read-only" value={review.rating} readOnly />
                 </Box>
                 <hr/>
-                </>
+                </div>
               )
             })}
           </DialogContentText>
