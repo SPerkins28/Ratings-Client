@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import {Button, Form, FormGroup, Label, Input} from '@material-ui/core'; 
-
+import {Button, FormGroup, InputLabel, Input} from '@material-ui/core'; 
 const ReviewCreate = (props) => {
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
@@ -30,27 +29,27 @@ const ReviewCreate = (props) => {
         <div className="main">
             <div className="mainDiv">
                 <h3>Write a Movie Review</h3>
-                <Form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <FormGroup>
-                        <Label htmlFor="title" value={title} />
+                        <InputLabel htmlFor="title" value={title} />
                         <Input name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor="date" value={date} />
+                        <InputLabel htmlFor="date" value={date} />
                         <Input name="date" value={date} onChange={(e) => setDate(e.target.value)} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor="entry" value={entry} />
+                        <InputLabel htmlFor="entry" value={entry} />
                         <Input name="entry" onChange={(e) => setEntry(e.target.value)} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor="rating" value={rating} />
+                        <InputLabel htmlFor="rating" value={rating} />
                         <Input name="rating" onChange={(e) => setRating(e.target.value)}>
                             <option value="radiobtn">Rating Button</option>
                         </Input>
                     </FormGroup>
                     <Button type="submit">Submit your Movie Review</Button>  
-                </Form>
+                </form>
             </div>
         </div>
     )
