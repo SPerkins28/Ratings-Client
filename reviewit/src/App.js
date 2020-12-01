@@ -3,6 +3,8 @@ import './App.css';
 import NavBar from './Components/home/Navbar';
 import SearchBar from './Components/home/SearchBar';
 import Movies from './Components/Movies/Movies';
+// import reviewIndex from './reviews/ReviewIndex';
+import ReviewEdit from './reviews/ReviewEdit';
 
 function App() {
   const [sessionToken, setSessionToken] = useState('');
@@ -38,6 +40,7 @@ function App() {
         {sessionToken && (<><SearchBar setMovies={setMovies} token={sessionToken}/>
         <Movies movies={movies} token={sessionToken}/></>)}
       </header>
+      <ReviewEdit />
     </div>
   );
 }

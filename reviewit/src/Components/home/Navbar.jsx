@@ -49,6 +49,7 @@ const Navbar = (props) => {
             {/* <div className={classes.offset} /> */}
             <LoginPopUp open={openLogin} onClose={() => setOpenLogin(false)} updateToken={props.updateToken}/>
             <SignUpPopUp open={openSignUp} onClose={() => setOpenSignUp(false)} updateToken={props.updateToken}/>
+            
         </>
     )} 
 
