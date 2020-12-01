@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import ReviewPopUp from '../../reviews/popups/ReviewPopUp';
+import ReviewCreate from '../../reviews/ReviewCreate';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,8 +80,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Movies = (props) => {
   const classes = useStyles();
-    
+  const [showReviews, setShowReviews] = useState(false);
+  const [createReview, setCreateReview] = useState(false);
+  const [movie, setMovie] = useState();
+
   return (
+    <>
+    {!props.movies ? <div className={classes.root}>No Movies Found</div> : 
     <div className={classes.root}>
       {props.movies.map((movie) => (
         <ButtonBase
@@ -91,6 +98,7 @@ const Movies = (props) => {
             width: 370,
             height: 550
           }}
+          onClick={() => {setShowReviews(true); setMovie(movie)}}
         >
           <span
             className={classes.imageSrc}
@@ -112,7 +120,12 @@ const Movies = (props) => {
           </span>
         </ButtonBase>
       ))}
-    </div>
+    {showReviews ? 
+    <ReviewPopUp open={showReviews} movie={movie} handleClose={() => setShowReviews(false)} showCreate={() => setCreateReview(true)}/> : null}
+    {createReview ?
+    <ReviewCreate open={createReview} token={props.token} movie={movie} handleClose={() => setCreateReview(false)} showReviews={() => setShowReviews(true)}/> : null}
+    </div>}
+    </>
   );
 }
 

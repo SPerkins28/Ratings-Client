@@ -1,0 +1,38 @@
+#addReviewsButton {
+    display: flex;
+    position: relative;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+#addReviewsClose {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+}
+
+#typographyText {
+    display: flex;
+    align-items: center;
+}
+
+#ratingReadOnly {
+    padding-top: .25em;
+    padding-bottom: .25em;
+    padding-left: 0;
+    margin-left: 0;
+    margin-bottom: .1em;
+}
+
+#dialogTitle {
+    color: #3F51B5;
+}
+
+#reviewTitle {
+    color: black;
+}
+
+p {
+    color: black;
+    font-size: .85em;
+}
