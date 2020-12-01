@@ -32,11 +32,11 @@ function App() {
   // console.log(movies);
 
   return (
-    <div className="App">
+    <div className="App" id="appBody">
       <header className="App-header">
         <NavBar clickLogout={clearToken} sessionToken={sessionToken} updateToken={updateToken}/>
         {sessionToken && (<><SearchBar setMovies={setMovies} token={sessionToken}/>
-        <Movies movies={movies}/></>)}
+        <Movies movies={movies} token={sessionToken}/></>)}
       </header>
     </div>
   );
