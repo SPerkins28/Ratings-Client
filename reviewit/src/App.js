@@ -29,7 +29,7 @@ function App() {
   //   return(sessionToken === localStorage.getItem('token') ? <SearchBar setMovies={setMovies} token={sessionToken}/>
   // //   : null)
   // }
-  console.log(movies);
+  // console.log(movies);
 
   return (
     <div className="App" id="appBody">
