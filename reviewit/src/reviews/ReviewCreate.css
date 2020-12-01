@@ -1,0 +1,59 @@
+#reviewForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#dateLabel {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: .5em;
+    margin-top: .5em;
+    color: black;
+}
+
+#dateInput {
+    display: flex;
+    justify-content: center;
+}
+
+#titleLabel {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: .5em;
+    color: black;
+}
+
+#entryLabel {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: .5em;
+    margin-top: .5em;
+    color: black;
+}
+
+#ratingLabel {
+    margin-top: .5em;
+    color: rgb(41, 40, 40);
+    text-shadow: #FFB400 0px 0px 2.5px, #FFB400 0px 0px 2.5px, #FFB400 0px 0px 2.5px,#FFB400 0px 0px 2.5px, #FFB400 0px 0px 2.5px,#FFB400 0px 0px 2.5px;
+    letter-spacing: .1em;
+}
+
+#ratingsBox {
+    padding-top: .25em;
+    padding-bottom: .25em;
+    padding-left: 0;
+    margin-left: 0;
+    margin-bottom: .1em;
+}
+
+.createReviewButton {
+    width: 50%;
+}
+
+#submitButton {
+    color: #3F51B5;
+}
+
+#backIcon {
+    color: #3F51B5;
+}
