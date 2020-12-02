@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import React, { useState, useEffect, useRef } from 'react';
 import {
     Button,
@@ -17,13 +16,14 @@ import {
 import Rating from '@material-ui/lab/Rating';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import './ReviewCreate.css';
+
 const ReviewCreate = (props) => {
     const [title, setTitle] = useState();
     const [date, setDate] = useState('');
     const [entry, setEntry] = useState('');
     const [rating, setRating] = useState(null);
 
-    const toggleViews = () => {
+    const toggleViews = () => { //created to switches which pop up you are viewing.
         props.handleClose();
         props.showReviews();
     }
@@ -35,7 +35,7 @@ const ReviewCreate = (props) => {
         if (descriptionElement !== null) {
             descriptionElement.focus();
         }
-        }
+}
     }, [props.open]);
 
     const handleSubmit = (e) => {

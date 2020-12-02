@@ -3,12 +3,12 @@ import './App.css';
 import NavBar from './Components/home/Navbar';
 import SearchBar from './Components/home/SearchBar';
 import Movies from './Components/Movies/Movies';
-// import reviewIndex from './reviews/ReviewIndex';
-import ReviewEdit from './reviews/ReviewEdit';
+import ReviewTable from './reviews/popups/ReviewTable';
 
 function App() {
   const [sessionToken, setSessionToken] = useState('');
   const [movies, setMovies] = useState([]);
+  const [userReviews, setUserReviews] = useState([]);
 
   useEffect(() => {
     if (localStorage.getItem('token')){
@@ -19,6 +19,7 @@ function App() {
   const updateToken = (newToken) => {
     localStorage.setItem('token', newToken);
     setSessionToken(newToken);
+    fetchReviews()
   }
 
   const clearToken = () => {
@@ -27,11 +28,21 @@ function App() {
     setMovies([]);
   }
 
-  // const protectedViews = () => {
-  //   return(sessionToken === localStorage.getItem('token') ? <SearchBar setMovies={setMovies} token={sessionToken}/>
-  // //   : null)
-  // }
-  // console.log(movies);
+  const fetchReviews = () => {
+    fetch('https://re-view-it.herokuapp.com/review/mine', {
+          method: 'GET',
+          headers: new Headers ({
+            'Content-Type': 'application/json',
+            'Authorization': sessionToken
+        })
+    })
+    .then((res) => res.json())
+    .then((myreviews) => {
+        setUserReviews(myreviews)
+        console.log(myreviews)
+    })
+
+  }
 
   return (
     <div className="App" id="appBody">
@@ -40,7 +51,7 @@ function App() {
         {sessionToken && (<><SearchBar setMovies={setMovies} token={sessionToken}/>
         <Movies movies={movies} token={sessionToken}/></>)}
       </header>
-      <ReviewEdit />
+        <ReviewTable userReviews={userReviews}/>
     </div>
   );
 }

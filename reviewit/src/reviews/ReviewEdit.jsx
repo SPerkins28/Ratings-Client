@@ -17,9 +17,9 @@ const ReviewEdit = (props) => {
 
     const reviewUpdate = (event, review) => {
       event.preventDefault();
-      fetch(`http://localhost:4000/update/${props.reviewToUpdate.id}`, {
+      fetch('http://localhost:4000/update/', {
           method: 'PUT',
-          body: JSON.stringify({review: {title: editTit, date: editDat, entry: editEnt, rating:editRat }}),
+          body: JSON.stringify({review: {title: editTit, date: editDat, entry: editEnt, rating: editRat }}),
           headers: new Headers({
               'Content-Type': 'application/json',
               'Authorization': props.token
@@ -30,10 +30,9 @@ const ReviewEdit = (props) => {
           props.updateOff();
           handleClose();
           // handleClickOpen();
-         
       })
-      
     }
+
 return (
     <div>
       <Button variant="outlined" color = "primary" onClick={handleClose}>
@@ -90,4 +89,5 @@ return (
        </Dialog>
        </div>
 )};
+
 export default ReviewEdit; 
