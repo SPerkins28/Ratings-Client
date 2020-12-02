@@ -20,7 +20,7 @@ const SignUpPopUp = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('https://re-view-it.herokuapp.com/user/signup', { //@ <--- Change to deployed server url once deployed!
+        fetch('https://re-view-it.herokuapp.com/user/signup', { 
             method: 'POST',
             body: JSON.stringify({firstName: firstName, lastName: lastName, email: email, password: password}),
             headers: new Headers({

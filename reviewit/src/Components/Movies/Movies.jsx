@@ -4,6 +4,8 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import ReviewPopUp from '../../reviews/popups/ReviewPopUp';
 import ReviewCreate from '../../reviews/ReviewCreate';
+import Grid from '@material-ui/core/Grid';
+import './Movies.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -86,6 +88,9 @@ const Movies = (props) => {
 
   return (
     <>
+    <Grid item xs={1}></Grid>
+    <Grid item xs={1}></Grid>
+    <Grid item xs={9} id="movieContent">
     {!props.movies ? <div className={classes.root}>No Movies Found</div> : 
     <div className={classes.root}>
       {props.movies.map((movie) => (
@@ -95,7 +100,7 @@ const Movies = (props) => {
           className={classes.image}
           focusVisibleClassName={classes.focusVisible}
           style={{
-            width: 370,
+            width: 362,
             height: 550
           }}
           onClick={() => {setShowReviews(true); setMovie(movie)}}
@@ -125,6 +130,8 @@ const Movies = (props) => {
     {createReview ?
     <ReviewCreate open={createReview} token={props.token} movie={movie} handleClose={() => setCreateReview(false)} showReviews={() => setShowReviews(true)}/> : null}
     </div>}
+    </Grid>
+    <Grid item xs={1}></Grid>
     </>
   );
 }

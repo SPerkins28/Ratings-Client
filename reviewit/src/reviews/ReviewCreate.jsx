@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import React, { useState, useEffect, useRef } from 'react';
 import {
     Button,
@@ -41,22 +40,22 @@ const ReviewCreate = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         fetch('https://re-view-it.herokuapp.com/review/create', {
-                method: 'POST',
-                body: JSON.stringify({review: {title, date, entry, rating, imdbID: props.movie.imdbID}}),
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'Authorization': props.token
-                })
+            method: 'POST',
+            body: JSON.stringify({review: {title, date, entry, rating, imdbID: props.movie.imdbID}}),
+            headers: new Headers({
+                'Content-Type': 'application/json', 
+                'Authorization': props.token
             })
-            .then ((res) => res.json())
-            .then((reviewData) => {
-                console.log(reviewData);
-                setTitle('');
-                setDate('');
-                setEntry('');
-                setRating('');
-                props.handleClose();
-            })
+        })
+        .then ((res) => res.json())
+        .then((reviewData) => {
+            console.log(reviewData);
+            setTitle('');
+            setDate('');
+            setEntry('');
+            setRating('');
+            props.handleClose();
+        })
     }
 
     return (

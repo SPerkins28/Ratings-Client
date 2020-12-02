@@ -40,7 +40,6 @@ const ReviewPopUp = (props) => {
       })
       .then ((res) => res.json())
       .then ((reviews) => {
-        console.log(reviews);
         setMovieReviews(reviews);
       })
     // })
@@ -50,6 +49,7 @@ const ReviewPopUp = (props) => {
 
     <div>
       <Dialog
+        id="reviewPopUp"
         open={props.open}
         onClose={props.handleClose}
         aria-labelledby="scroll-dialog-title"
@@ -68,7 +68,7 @@ const ReviewPopUp = (props) => {
               return (
                 <div key={review.id}>
                 <Typography variant="h6" id="reviewTitle"><strong>{review.title}</strong></Typography>
-                <p>{review.entry}</p>
+                <Typography id="entryText">{review.entry}</Typography>
                 <Box component="fieldset" mb={3} borderColor="transparent" id="ratingReadOnly">
                   <Rating name="read-only" value={review.rating} readOnly />
                 </Box>
