@@ -62,7 +62,7 @@ const SearchBar = (props) => {
                 // onSubmit={enterPressed}
             />
             <Divider className={classes.divider} orientation="vertical" />
-            <IconButton type="submit" className={classes.iconButton} onClick={handleSubmit} >
+            <IconButton type="submit" className={classes.iconButton} onClick={handleSubmit} id="magGlass" >
                 <SearchIcon />
             </IconButton>
         </Paper>
