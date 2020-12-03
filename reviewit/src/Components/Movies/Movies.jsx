@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import ReviewPopUp from '../../reviews/popups/ReviewPopUp';
 import ReviewCreate from '../../reviews/ReviewCreate';
 import Grid from '@material-ui/core/Grid';
+import SearchBar from '../home/SearchBar';
+import Paper from '@material-ui/core/Paper'
 import './Movies.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -85,16 +87,22 @@ const Movies = (props) => {
   const [showReviews, setShowReviews] = useState(false);
   const [createReview, setCreateReview] = useState(false);
   const [movie, setMovie] = useState();
+  const [movies, setMovies] = useState([]);
+
+  console.log(props.sessionToken);
 
   return (
     <>
-    <Grid item xs={1}></Grid>
-    <Grid item xs={1}></Grid>
+    {props.token ?
+    <Grid container>
+    <SearchBar setMovies={setMovies} token={props.sessionToken} />
+    <Grid item xs={2}></Grid>
     <Grid item xs={8} id="movieContent">
-    {!props.movies ? <div className={classes.root}>No Movies Found</div> : 
-    <div className={classes.root}>
-      {props.movies.map((movie) => (
+    {!movies ? <div className={classes.root}>No Movies Found</div> : 
+    <div className={classes.root} id="buttonHousing">
+      {movies.map((movie) => (
         <ButtonBase
+          id="movieButton"
           focusRipple
           key={movie.imdbID}
           className={classes.image}
@@ -131,8 +139,8 @@ const Movies = (props) => {
     <ReviewCreate open={createReview} token={props.token} movie={movie} handleClose={() => setCreateReview(false)} showReviews={() => setShowReviews(true)}/> : null}
     </div>}
     </Grid>
-    <Grid item xs={1}></Grid>
-    <Grid item xs={1}></Grid>
+    <Grid item xs={2}></Grid>
+    </Grid> : <Paper id="movieMessage"><strong>Please Login or Sign Up to view this page</strong></Paper>}
     </>
   );
 }

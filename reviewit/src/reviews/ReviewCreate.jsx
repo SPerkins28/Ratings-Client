@@ -50,7 +50,6 @@ const ReviewCreate = (props) => {
         })
         .then ((res) => res.json())
         .then((reviewData) => {
-            console.log(reviewData);
             setTitle('');
             setDate('');
             setEntry('');

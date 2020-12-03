@@ -7,20 +7,21 @@ import {
   TableHead,
   TableRow,
   Paper,
-  DialogActions,
-  Grid,
-  Button,
-  IconButton,
+  // DialogActions,
+  // Grid,
+  // Button,
+  // IconButton,
 } from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
+import './ReviewTable.css';
+// import EditIcon from '@material-ui/icons/Edit';
+// import DeleteIcon from '@material-ui/icons/Delete';
 
 
 
 const ReviewTable = (props) => {
   const [userReviews, setUserReviews] = useState([]);
   useEffect (() => {
-    fetch('https://re-view-it.herokuapp.com/review/mine', {
+    fetch('https://re-view-it.herokuapp.com/review/', {
           method: 'GET',
           headers: new Headers ({
             'Content-Type': 'application/json',
@@ -30,37 +31,36 @@ const ReviewTable = (props) => {
     .then((res) => res.json())
     .then((data) => {
         setUserReviews(data)
-        console.log(data)
     })
   }, [props.token])
 
   return (
+    <>
+    {props.token ?
     <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead >
-            <TableRow>
-              <TableCell>Review Archive</TableCell>
-              <TableCell align="right">Title</TableCell>
-              <TableCell align="right">Date</TableCell>
-              <TableCell align="right">Entry</TableCell>
-              <TableCell align="right">Rating</TableCell>
+            <TableRow>            
+              <TableCell align="left"><strong>Title</strong></TableCell>
+              <TableCell align="left"><strong>Date</strong></TableCell>
+              <TableCell align="left"><strong>Entry</strong></TableCell>
+              <TableCell align="left"><strong>Rating</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-          {userReviews.map((myreview, index) => {
+          {userReviews.length > 0 && userReviews.map((myreview, index) => {
           return (
             <TableRow key={index}>
-              <TableCell scope="row">{myreview.id}</TableCell>
-              <TableCell align="right">{myreview.title}</TableCell>
-              <TableCell align="right">{myreview.date}</TableCell>
-              <TableCell align="right">{myreview.entry}</TableCell>
-              <TableCell align="right">{myreview.rating}</TableCell>
+              <TableCell align="left">{myreview.title}</TableCell>
+              <TableCell align="left">{myreview.date}</TableCell>
+              <TableCell align="left">{myreview.entry}</TableCell>
+              <TableCell align="center">{myreview.rating}</TableCell>
             </TableRow>
           )
         })}
           </TableBody>
         </Table>
-        <DialogActions id='dialogBottom'>
+        {/* <DialogActions id='dialogBottom'>
             <Grid item xs={6} id='addReviewsButton'>
                 <IconButton >
                     <EditIcon color='primary'/>
@@ -71,8 +71,9 @@ const ReviewTable = (props) => {
             </Grid>
             <Grid item xs={6} id='addReviewsClose'>
             </Grid>
-        </DialogActions>
-      </TableContainer>
+        </DialogActions> */}
+      </TableContainer> : <Paper id="reviewMessage"><strong>Please Login or Sign Up to view this page</strong></Paper>}
+      </>
     );
   }
 
