@@ -26,13 +26,17 @@ import {
   Switch
 } from 'react-router-dom';
 import './SideDrawer.css';
+import ReviewTable from '../../reviews/popups/ReviewTable';
+import HomeIcon from '@material-ui/icons/Home';
+import TheatersIcon from '@material-ui/icons/Theaters';
+import Movies from '../Movies/Movies';
+import Home from '../home/Home';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    background: '#3F51B5',
   },
   appBar: {
     zIndex: theme.zIndex.appBar + 1000,
@@ -171,21 +175,37 @@ const SideDrawer = (props) => {
             </div>
             <Divider />
             <List>
-            {['My Reviews'].map((text, index) => (
-                  <Link to="/myreviews" className="links" key={text}>
-                <ListItem button key={text}>
+            <Link to="/" className="links" >
+                <ListItem button >
                   <ListItemIcon>
-                      {index % 2 === 0 ? <RateReviewIcon id="myReviews"/> : <RateReviewIcon />}
+                    <HomeIcon className="sideIcons"/>
                   </ListItemIcon>
-                <ListItemText primary={text} />
+                  <ListItemText>Home</ListItemText>
                 </ListItem>
-                  </Link>
-            ))}
+              </Link>
+              <Link to="/myreviews" className="links" >
+                <ListItem button >
+                  <ListItemIcon>
+                    <RateReviewIcon className="sideIcons"/>
+                  </ListItemIcon>
+                  <ListItemText>My Reviews</ListItemText>
+                </ListItem>
+              </Link>
+              <Link to="/movies" className="links" >
+                <ListItem button >
+                  <ListItemIcon>
+                    <TheatersIcon className="sideIcons"/>
+                  </ListItemIcon>
+                  <ListItemText>Movie Search</ListItemText>
+                </ListItem>
+              </Link>
             </List>
             <Divider />
         </Drawer>
         <Switch>
-          <Route exact path="/myreviews"></Route>
+          <Route exact path="/"><Home /></Route>
+          <Route exact path="/myreviews"><ReviewTable token={props.sessionToken}/></Route>
+          <Route exact path="/movies"><Movies token={props.sessionToken}/></Route>
         </Switch>
         </div>
     )
