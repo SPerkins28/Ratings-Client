@@ -21,8 +21,8 @@ const ReviewPopUp = (props) => {
     props.showCreate();
   }
 
-  const descriptionElementRef = useRef(null);
-  useEffect(() => {
+  const descriptionElementRef = useRef(null); //relation to popup, popup being closed to start
+  useEffect(() => { //setting up so when the button is clicked it opens and displays the description element
     if (props.open) {
       const { current: descriptionElement } = descriptionElementRef;
       if (descriptionElement !== null) {
