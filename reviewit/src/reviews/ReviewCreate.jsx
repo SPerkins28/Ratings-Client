@@ -16,7 +16,7 @@ import {
 import Rating from '@material-ui/lab/Rating';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import './ReviewCreate.css';
-import '../helpers/environment';
+import APIURL from '../helpers/environment';
 
 const ReviewCreate = (props) => {
     const [title, setTitle] = useState();

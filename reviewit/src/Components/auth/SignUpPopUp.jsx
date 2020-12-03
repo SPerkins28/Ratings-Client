@@ -7,7 +7,7 @@ import {
     DialogContent,
     DialogTitle,
 } from '@material-ui/core';
-import '../../helpers/environment';
+import APIURL from '../../helpers/environment';
 
 const SignUpPopUp = (props) => {
     const [firstName, setFirstName] = useState('');

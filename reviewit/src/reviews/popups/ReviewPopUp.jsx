@@ -12,7 +12,7 @@ import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box';
 import Rating from '@material-ui/lab/Rating'
 import '../popups/ReviewPopUp.css';
-import '../../helpers/environment';
+import APIURL from '../../helpers/environment';
 
 const ReviewPopUp = (props) => {
   const [movieReviews, setMovieReviews] = useState([]);
