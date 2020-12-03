@@ -45,12 +45,12 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
+      easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
   menuButton: {
-    marginRight: 36,
+    marginRight: theme.spacing(2),
   },
   hide: {
     display: 'none',
@@ -58,7 +58,9 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    whiteSpace: 'nowrap',
+  },
+  drawerPaper: {
+    width: drawerWidth,
   },
   drawerOpen: {
     width: drawerWidth,
@@ -67,28 +69,29 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
-  drawerClose: {
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9) + 1,
-    },
-  },
-  toolbar: {
+  drawerHeader: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: -drawerWidth,
+  },
+  contentShift: {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
   },
 }));
 
@@ -97,7 +100,7 @@ const SideDrawer = (props) => {
     const theme = useTheme();
     const [openLogin, setOpenLogin] = useState(false);
     const [openSignUp, setOpenSignUp] = useState(false);
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -154,21 +157,14 @@ const SideDrawer = (props) => {
         <LoginPopUp open={openLogin} onClose={() => setOpenLogin(false)} updateToken={props.updateToken}/>
         <SignUpPopUp open={openSignUp} onClose={() => setOpenSignUp(false)} updateToken={props.updateToken}/>
         <Drawer
-            variant="permanent"
-            style={{backgroundColor: "lightslategray"}}
-            className={clsx(classes.drawer, {
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-            })}
+            variant="persistent"
+            anchor="left"
+            open={open}
             classes={{
-              paper:
-                  clsx({
-                  [classes.drawerOpen]: open,
-                  [classes.drawerClose]: !open,
-              }),
+              paper: classes.drawerPaper,
             }}
         >
-            <div className={classes.toolbar}>
+            <div className={classes.drawerHeader}>
             <IconButton onClick={handleDrawerClose}>
                 {theme.direction === 'rtl' ? <ChevronRightIcon id="drawerClose" /> : <ChevronLeftIcon />}
             </IconButton>
@@ -176,7 +172,7 @@ const SideDrawer = (props) => {
             <Divider />
             <List>
             {['My Reviews'].map((text, index) => (
-                  <Link to="/myreviews" className="links">
+                  <Link to="/myreviews" className="links" key={text}>
                 <ListItem button key={text}>
                   <ListItemIcon>
                       {index % 2 === 0 ? <RateReviewIcon id="myReviews"/> : <RateReviewIcon />}

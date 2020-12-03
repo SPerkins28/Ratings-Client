@@ -46,12 +46,12 @@ function App() {
   return (
     <div className="App" id="appBody">
       <header className="App-header">
+      </header>
         <Router>
           <SideDrawer clickLogout={clearToken} sessionToken={sessionToken} updateToken={updateToken} />
           {sessionToken && (<><SearchBar setMovies={setMovies} token={sessionToken}/>
           <Movies movies={movies} token={sessionToken}/></>)}
         </Router>
-      </header>
     </div>
   );
 }

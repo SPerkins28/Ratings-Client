@@ -1,4 +1,5 @@
 #movieContent {
     display: flex;
     justify-content: center;
+    margin-left: 1.25em;
 }
