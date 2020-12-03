@@ -1,0 +1,22 @@
+#tableContainer {
+    display: flex;
+    justify-content: center;
+};
+
+.table {
+    min-width: 20vh;
+    min-height: 50vh;
+    margin-Top: 5%;
+    margin-Bottom: 5%;
+    padding: 2px 4px;
+    display: flex;
+    align-Items: center;
+};
+
+#tableRow {
+    min-width: 20vh;
+    min-height: 50vh;
+    margin-Top: 5%;
+    margin-Bottom: 5%;
+    padding: 2px 4px;
+}

@@ -3,7 +3,6 @@ import './App.css';
 import SearchBar from './Components/home/SearchBar';
 import SideDrawer from './Components/home/SideDrawer';
 import Movies from './Components/Movies/Movies';
-// import ReviewTable from './reviews/popups/ReviewTable';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {

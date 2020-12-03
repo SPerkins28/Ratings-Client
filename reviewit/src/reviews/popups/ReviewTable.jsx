@@ -7,15 +7,14 @@ import {
   TableHead,
   TableRow,
   Paper,
-  DialogActions,
-  Grid,
-  Button,
-  IconButton,
+  // DialogActions,
+  // Grid,
+  // Button,
+  // IconButton,
 } from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-
-
+import './ReviewTable.css';
+// import EditIcon from '@material-ui/icons/Edit';
+// import DeleteIcon from '@material-ui/icons/Delete';
 
 const ReviewTable = (props) => {
   const [userReviews, setUserReviews] = useState([]);
@@ -35,8 +34,8 @@ const ReviewTable = (props) => {
   }, [props.token])
 
   return (
-    <TableContainer component={Paper}>
-        <Table aria-label="simple table">
+    <TableContainer component={Paper} id="tableContainer">
+        <Table className="table" aria-label="simple table">
           <TableHead >
             <TableRow>
               <TableCell>Review Archive</TableCell>
@@ -47,33 +46,21 @@ const ReviewTable = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-          {userReviews.map((myreview, index) => {
-          return (
-            <TableRow key={index}>
-              <TableCell scope="row">{myreview.id}</TableCell>
+          {userReviews.map((myreview, index) => (
+            <TableRow key={index} id="tableRow">
+              <TableCell component="th" scope="row">
+                {myreview.id}
+              </TableCell>
               <TableCell align="right">{myreview.title}</TableCell>
               <TableCell align="right">{myreview.date}</TableCell>
               <TableCell align="right">{myreview.entry}</TableCell>
               <TableCell align="right">{myreview.rating}</TableCell>
             </TableRow>
-          )
-        })}
-          </TableBody>
-        </Table>
-        <DialogActions id='dialogBottom'>
-            <Grid item xs={6} id='addReviewsButton'>
-                <IconButton >
-                    <EditIcon color='primary'/>
-                </IconButton>
-                <IconButton >
-                    <DeleteIcon color='primary'/>
-                </IconButton>
-            </Grid>
-            <Grid item xs={6} id='addReviewsClose'>
-            </Grid>
-        </DialogActions>
-      </TableContainer>
-    );
-  }
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  )
+};
 
 export default ReviewTable;

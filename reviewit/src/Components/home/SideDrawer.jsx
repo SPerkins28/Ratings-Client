@@ -26,6 +26,7 @@ import {
   Switch
 } from 'react-router-dom';
 import './SideDrawer.css';
+import ReviewTable from '../../reviews/popups/ReviewTable';
 
 const drawerWidth = 240;
 
@@ -171,22 +172,23 @@ const SideDrawer = (props) => {
             </div>
             <Divider />
             <List>
-            {['My Reviews'].map((text, index) => (
+            {['My Review'].map((text, index) => (
                   <Link to="/myreviews" className="links" key={text}>
+                  <Link to="/reviewTable">Review Table</Link>
                 <ListItem button key={text}>
                   <ListItemIcon>
                       {index % 2 === 0 ? <RateReviewIcon id="myReviews"/> : <RateReviewIcon />}
                   </ListItemIcon>
                 <ListItemText primary={text} />
                 </ListItem>
+                <Switch>
+                  <Route exact path="/reviewtable"><ReviewTable /></Route>
+                </Switch>
                   </Link>
-            ))}
+              ))}
             </List>
             <Divider />
         </Drawer>
-        <Switch>
-          <Route exact path="/myreviews"></Route>
-        </Switch>
         </div>
     )
 }

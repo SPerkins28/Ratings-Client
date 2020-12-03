@@ -34,7 +34,6 @@ const SearchBar = (props) => {
     const [search, setSearch] = useState('');
     const API_KEY = '913c9d93';
 
-    
     const handleSubmit = (e) => {
         e.preventDefault();
         props.setMovies([]);
@@ -49,7 +48,7 @@ const SearchBar = (props) => {
             props.setMovies(movies.Search);
         })
     }
-
+    
     return (
         <>
         <Grid item xs={1}></Grid>
@@ -70,6 +69,6 @@ const SearchBar = (props) => {
         <Grid item xs={1}></Grid>
         </>
     )
-}
+};
 
 export default SearchBar;
