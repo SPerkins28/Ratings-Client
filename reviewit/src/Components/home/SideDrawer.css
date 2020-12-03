@@ -1,0 +1,40 @@
+/* body {
+    background: url('./assets/collage5.png') center bottom;
+    min-height: 100vh;
+} */
+
+#routerButton {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+}
+
+#titleButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#searchBar {
+    display: flex;
+    justify-content: center;
+}
+
+.sideIcons {
+    color: white;
+}
+
+.MuiDrawer-paper {
+    background-color: #424242 !important;
+}
+
+.links {
+    color: white;
+}
+
+/* .MuiIconButton-root {
+    color: white !important;
+} */

@@ -1,0 +1,20 @@
+/* .MuiPaper-root .MuiTableContainer-root .MuiPaper-elevation1 .MuiPaper-rounded{
+    margin: 3em !important;
+    
+} */
+
+.MuiTableContainer-root {
+    margin: 3em;
+}
+
+#reviewMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 75px;
+    background-image: url('../../assets/Warning1.png');
+    object-fit: cover;
+    color: white;
+    text-shadow: black 0px 0px 2.5px, black 0px 0px 2.5px, black 0px 0px 2.5px,black 0px 0px 2.5px, black 0px 0px 2.5px,black 0px 0px 2.5px;
+}
