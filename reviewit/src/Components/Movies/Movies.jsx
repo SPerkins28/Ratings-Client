@@ -90,7 +90,7 @@ const Movies = (props) => {
     <>
     <Grid item xs={1}></Grid>
     <Grid item xs={1}></Grid>
-    <Grid item xs={9} id="movieContent">
+    <Grid item xs={8} id="movieContent">
     {!props.movies ? <div className={classes.root}>No Movies Found</div> : 
     <div className={classes.root}>
       {props.movies.map((movie) => (
@@ -100,7 +100,7 @@ const Movies = (props) => {
           className={classes.image}
           focusVisibleClassName={classes.focusVisible}
           style={{
-            width: 362,
+            width: 330,
             height: 550
           }}
           onClick={() => {setShowReviews(true); setMovie(movie)}}
@@ -131,6 +131,7 @@ const Movies = (props) => {
     <ReviewCreate open={createReview} token={props.token} movie={movie} handleClose={() => setCreateReview(false)} showReviews={() => setShowReviews(true)}/> : null}
     </div>}
     </Grid>
+    <Grid item xs={1}></Grid>
     <Grid item xs={1}></Grid>
     </>
   );

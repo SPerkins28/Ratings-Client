@@ -166,13 +166,13 @@ const SideDrawer = (props) => {
         >
             <div className={classes.drawerHeader}>
             <IconButton onClick={handleDrawerClose}>
-                {theme.direction === 'ltr' ? <ChevronRightIcon id="drawerClose" /> : <ChevronLeftIcon />}
+                {theme.direction === 'rtl' ? <ChevronRightIcon id="drawerClose" /> : <ChevronLeftIcon />}
             </IconButton>
             </div>
             <Divider />
             <List>
             {['My Reviews'].map((text, index) => (
-                  <Link to="/myreviews" className="links">
+                  <Link to="/myreviews" className="links" key={text}>
                 <ListItem button key={text}>
                   <ListItemIcon>
                       {index % 2 === 0 ? <RateReviewIcon id="myReviews"/> : <RateReviewIcon />}
