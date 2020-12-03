@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Table,
   TableBody,
@@ -18,7 +18,22 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 
 const ReviewTable = (props) => {
-  
+  const [userReviews, setUserReviews] = useState([]);
+  useEffect (() => {
+    fetch('https://re-view-it.herokuapp.com/review/mine', {
+          method: 'GET',
+          headers: new Headers ({
+            'Content-Type': 'application/json',
+            'Authorization': props.token
+        })
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        setUserReviews(data)
+        console.log(data)
+    })
+  }, [props.token])
+
   return (
     <TableContainer component={Paper}>
         <Table aria-label="simple table">
@@ -32,7 +47,7 @@ const ReviewTable = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-          {props.userReviews.map((myreview, index) => {
+          {userReviews.map((myreview, index) => {
           return (
             <TableRow key={index}>
               <TableCell scope="row">{myreview.id}</TableCell>
@@ -40,7 +55,7 @@ const ReviewTable = (props) => {
               <TableCell align="right">{myreview.date}</TableCell>
               <TableCell align="right">{myreview.entry}</TableCell>
               <TableCell align="right">{myreview.rating}</TableCell>
-          </TableRow>
+            </TableRow>
           )
         })}
           </TableBody>
