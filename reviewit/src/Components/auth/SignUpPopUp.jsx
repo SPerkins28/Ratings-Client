@@ -7,6 +7,7 @@ import {
     DialogContent,
     DialogTitle,
 } from '@material-ui/core';
+import '../../helpers/environment';
 
 const SignUpPopUp = (props) => {
     const [firstName, setFirstName] = useState('');
@@ -20,7 +21,7 @@ const SignUpPopUp = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('https://re-view-it.herokuapp.com/user/signup', { 
+        fetch(`${APIURL}/user/signup`, { 
             method: 'POST',
             body: JSON.stringify({firstName: firstName, lastName: lastName, email: email, password: password}),
             headers: new Headers({

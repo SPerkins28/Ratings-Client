@@ -7,6 +7,7 @@ import {
     DialogContent,
     DialogTitle,
 } from '@material-ui/core';
+import '../../helpers/environment';
 
 const LoginPopUp = (props) => {
     
@@ -19,7 +20,7 @@ const LoginPopUp = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('https://re-view-it.herokuapp.com/user/login', { 
+        fetch(`${APIURL}/user/login`, { 
             method: 'POST',
             body: JSON.stringify({email: email, password: password}),
             headers: new Headers({

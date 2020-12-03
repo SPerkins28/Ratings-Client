@@ -16,6 +16,7 @@ import {
 import Rating from '@material-ui/lab/Rating';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import './ReviewCreate.css';
+import '../helpers/environment';
 
 const ReviewCreate = (props) => {
     const [title, setTitle] = useState();
@@ -40,7 +41,7 @@ const ReviewCreate = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('https://re-view-it.herokuapp.com/review/create', {
+        fetch(`${APIURL}/review/create`, {
             method: 'POST',
             body: JSON.stringify({review: {title, date, entry, rating, imdbID: props.movie.imdbID}}),
             headers: new Headers({

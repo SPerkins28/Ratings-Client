@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box';
 import Rating from '@material-ui/lab/Rating'
 import '../popups/ReviewPopUp.css';
+import '../../helpers/environment';
 
 const ReviewPopUp = (props) => {
   const [movieReviews, setMovieReviews] = useState([]);
@@ -32,7 +33,7 @@ const ReviewPopUp = (props) => {
   }, [props.open]);
 
   useEffect(() => {
-    fetch(`https://re-view-it.herokuapp.com/review/${props.movie.imdbID}`, {
+    fetch(`${APIURL}/review/${props.movie.imdbID}`, {
       method: 'GET',
       // headers: new Headers({
       //   'Content-Type': 'application/json', //@ <--- This API Still does not like headers lol
